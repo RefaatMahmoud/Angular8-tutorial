@@ -1,0 +1,78 @@
+<div>
+  <!-- 
+    [1] String Interpolation 
+    ========================
+    {{value}}
+  -->
+  <h3>String Interpolation : <i>{{name}}</i>
+  </h3>
+  <hr>
+  <!-- 
+    [2.1] Property Binding 
+    =======================
+    [property]="value"
+  -->
+  <h3>Property Binding : <i [innerText]="name"></i></h3>
+  <Button [disabled]="!btnStatus">Button 1</Button>
+  <hr>
+  <!-- 
+    [3] Event Binding 
+    =======================
+    (event)="method"
+   -->
+  <h3>Event Binding :</h3> <Button (click)="activeBtn()">Active Button 1 </Button>
+  <hr>
+  <!-- 
+    [4] Passing Data using Event
+    ============================
+    (input)="method($event)"
+  -->
+  <h3>Passing Data using Event : </h3>
+  <input (input)="changeName($event)" type="text">
+  <hr>
+  <!-- 
+    [5] Two Way Data Binding
+    ============================
+    - [(ngModle)]="property"
+    - should import formModule in app.module.ts
+      1 - import { FormsModule } from '@angular/forms';
+      2 - imports: [FormsModule]
+  -->
+  <h3>Two Way Data Binding : </h3>
+  <input type="text" name="name" [(ngModel)]="name">
+</div>
+
+<!-- 
+    [5] Class Binding 
+    =======================
+    [ngClass]="{'class': true}"    
+  -->
+<div>
+  <h3>Class Binding</h3>
+  <h3 [class]="textSuccess">Class Binding Ex1</h3>
+  <h3 [class]="hasError ? 'text-success' : 'text-danger'">Class Binding Ex2</h3>
+  <h3 [ngClass]="{'text-danger': hasError}">Class Binding Ex3</h3>
+</div>
+<hr>
+<!-- 
+    [6] Style Binding 
+    =======================
+  -->
+
+<div>
+  <h3>Style Binding</h3>
+  <h3 [style.color]="'orange'">Style Binding Ex1</h3>
+  <h3 [style.color]=" hasError ? 'green' : 'red'">Style Binding Ex2</h3>
+  <h3 [ngStyle]="titleStyleObj">Style Binding Ex3</h3>
+  <h3 [ngStyle]="{'color':  hasError ? 'green' : 'red'}">Style Binding Ex4</h3>
+</div>
+<hr>
+
+<!-- 
+    [6] Template Referrance variable 
+    ================================
+  -->
+  <h3>Template Referrance variable</h3>
+  <label for="username">Username</label> : <input #username type="text">
+  <label for="password">Password</label> : <input #password type="text">
+  <button (click)="LoginData(username.value,password.value)" >Console Data</button>
