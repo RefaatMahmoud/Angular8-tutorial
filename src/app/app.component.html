@@ -1,0 +1,84 @@
+<div>
+  <h2>Directives</h2>
+  <!-- 
+    *ngIf
+    ======
+    *ngIf = "expression else elseStat"
+    <ng-template #elseStat> 
+
+    </ng-template>
+  -->
+  <div *ngIf="flage else closeFlage">
+    <span style="color: #080;">Flage is {{flage}}</span>
+  </div>
+  <ng-template #closeFlage>
+    <span style="color: #F00;">Flage is {{flage}}</span>
+  </ng-template>
+  <br>
+  <!-- *ngIf then else-->
+
+  <ng-container *ngIf="flage; then thenTemplate; else elseTemplate"></ng-container>
+  <ng-template #thenTemplate>
+      <span style="color: #080;">Flage is {{flage}}</span>
+  </ng-template>
+  <ng-template #elseTemplate>
+      <span style="color: #F00;">Flage is {{flage}}</span>
+  </ng-template>
+  
+    <!-- 
+    ngStyle
+    ==============
+    [ngStyle]="{'property': expression}"
+    -->
+  <div>
+    <span style="color: #FFF;" [ngStyle]="{'backgroundColor': getFlageColor()}">Flage is {{flage}}</span>
+  </div>
+
+
+    <!-- 
+    ngClass
+    ==============
+    [ngClass]="{'class': expression}"
+    -->
+    <div>
+      <span style="color: #FFF;" [ngClass]="{'success': flage}">Flage is {{flage}}</span><br>
+      <span style="color: #FFF;" [ngClass]="{'fail': !flage}">Flage is {{flage}}</span>
+    </div>
+
+    <!-- 
+      *ngFor
+      ======
+      *ngFor="let item of items;let i = index"
+     -->
+     <ul *ngFor="let name of names;let i = index" >
+       <li>{{i}} - {{name}}</li>
+     </ul>
+
+     <!-- [ngSwitch]-->
+     <span [ngSwitch]="flage">
+     <p *ngSwitchCase="true">
+        Flag is true
+     </p>
+     <p *ngSwitchCase="false">
+        Flag is false
+     </p>
+     <p *ngSwitchDefault>
+        Flag Note found
+     </p>
+     </span>
+
+     <!-- ng-content -->
+     <app-panel>
+          <ng-container class="header">my custm header</ng-container>
+          <ng-container class="body">my custom body</ng-container>
+     </app-panel>
+
+</div>
+
+<!-- Notes
+- structure directives
+[*ngIf , *ngFor , *ngSwitch]
+-->
+
+<!--Custom Directive-->
+<input type="text" appInputUpperFormat>
